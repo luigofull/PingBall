@@ -9,7 +9,7 @@ powered by Python 3.13.2
 
 > ## GAME ONLY FOR WINDOWS
 
-The Gameplay: https://www.youtube.com/embed/zobSPzOMImI
+- The Gameplay: https://www.youtube.com/embed/zobSPzOMImI
 
 > ## Sceenshots
 
