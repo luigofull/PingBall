@@ -9,4 +9,9 @@ powered by Python 3.13.2
 
 > GAME ONLY FOR WINDOWS
 
-<iframe width="1219" height="686" src="https://www.youtube.com/embed/zobSPzOMImI" title="Gameplay of PingBall Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+The Gameplay: https://www.youtube.com/embed/zobSPzOMImI
+
+> Sceenshots
+
+![Screenshot 2025-02-08 142747](https://github.com/user-attachments/assets/505aa1b4-ebed-4d70-a105-cdefaaba0878)
+![Screenshot 2025-02-08 142715](https://github.com/user-attachments/assets/cc003b6a-88ac-4b4c-8683-e65ffad43d59)
