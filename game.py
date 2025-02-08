@@ -1,13 +1,13 @@
 from tkinter import *
-# from emoji import emojize
 import random
 import time
 
 tk = Tk()
 
 
+# class Ball
 class Ball:
-    def __init__(self, canvas, paddle, color):
+    def __init__(self, canvas, paddle, score_label, color):
         self.canvas = canvas
         self.paddle = paddle
         self.id = canvas.create_oval(10, 10, 25, 25, fill=color)
@@ -19,6 +19,9 @@ class Ball:
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
         self.hit_bottom = False
+
+        self.score_label = score_label
+        self.score = 0
 
     def hit_paddle(self, pos):
         paddle_pos = self.canvas.coords(self.paddle.id)
@@ -40,12 +43,15 @@ class Ball:
             self.y = -3
         if self.hit_paddle(pos) == True:
             self.y = -3
+            self.score += 1
+            self.canvas.itemconfig(self.score_label, text=str(self.score))
         if pos[0] <= 0:
             self.x = 3
         if pos[2] >= self.canvas_width:
             self.x = -3
 
 
+# class Paddle
 class Paddle:
     def __init__(self, canvas, color):
         self.canvas = canvas
@@ -65,35 +71,31 @@ class Paddle:
             self.x = 0
 
     def turn_left(self, evt):
-        self.x = -2
+        self.x = -2.5
 
     def turn_right(self, evt):
-        self.x = 2
+        self.x = 2.5
 
 
-#a = [
-#    emojize(":angry_face:"),
-#    emojize(":smiling_face_with_sunglasses:"),
-#    emojize(":grinning_face:"),
-#    emojize(":loudly_crying_face:"),
-#    emojize(":rolling_on_the_floor_laughing:"),
-#    emojize(":face_with_tears_of_joy:"),
-#    emojize(":slightly_smiling_face:"),
-#    emojize(":smiling_face_with_halo:"),
-#    emojize(":zipper-mouth_face:"),
-#    emojize(":unamused_face:"),
-#]
-#b = random.choice(a)
+# make Window
 tk.title("PINGBALL")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
 canvas = Canvas(tk, width=400, height=400, bd=0, highlightthickness=0)
+
+score_label = canvas.create_text(
+    70, 15, text="0", fill="black", font=("Helvetica", 15, "bold")
+)
+canvas.create_text(30, 15, text="Score", fill="black", font=("Helvetica 15 bold"))
+
 canvas.pack()
 tk.update()
 
+# define Classes
 paddle = Paddle(canvas, "blue")
-ball = Ball(canvas, paddle, "red")
+ball = Ball(canvas, paddle, score_label, "red")
 
+# main loop
 while True:
     if ball.hit_bottom == False:
         ball.draw()
