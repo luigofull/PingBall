@@ -77,12 +77,13 @@ class Paddle:
         self.x = 2.5
 
 
-# make Window
+# Make Window
 tk.title("PINGBALL")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
 canvas = Canvas(tk, width=400, height=400, bd=0, highlightthickness=0)
 
+# Score
 score_label = canvas.create_text(
     70, 15, text="0", fill="black", font=("Helvetica", 15, "bold")
 )
@@ -91,12 +92,13 @@ canvas.create_text(30, 15, text="Score", fill="black", font=("Helvetica 15 bold"
 canvas.pack()
 tk.update()
 
-# define Classes
+# Define Classes
 paddle = Paddle(canvas, "blue")
 ball = Ball(canvas, paddle, score_label, "red")
 
-# main loop
+# Main loop
 while True:
+    # Draw ball and paddle
     if ball.hit_bottom == False:
         ball.draw()
         paddle.draw()
