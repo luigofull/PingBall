@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 import random
 import time
 
@@ -14,11 +15,11 @@ class Ball:
         self.canvas.move(self.id, 245, 100)
         starts = [-3, -2, -1, 1, 2, 3]
         random.shuffle(starts)
-        self.x = starts[0]
-        self.y = -3
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
-        self.hit_bottom = False
+        self.hit_bottom = False 
+        self.x = starts[0]
+        self.y = -3
 
         self.score_label = score_label
         self.score = 0
@@ -50,7 +51,6 @@ class Ball:
         if pos[2] >= self.canvas_width:
             self.x = -3
 
-
 # class Paddle
 class Paddle:
     def __init__(self, canvas, color):
@@ -76,12 +76,45 @@ class Paddle:
     def turn_right(self, evt):
         self.x = 2.5
 
+# Restart button
+def restart_button():
+    tk.destroy()
+    exe_path = os.path.abspath(os.path.join(os.getcwd(), "game.exe"))
+    os.system(exe_path)
 
 # Make Window
 tk.title("PINGBALL")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
 canvas = Canvas(tk, width=400, height=400, bd=0, highlightthickness=0)
+
+
+# Restart button
+button = Button(tk, 
+                   text="RESTART", 
+                   command=restart_button,
+                   activebackground="blue", 
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100,
+)
+
+button.pack(padx=10, pady=10)
 
 # Score
 score_label = canvas.create_text(
